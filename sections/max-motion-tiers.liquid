@@ -89,13 +89,16 @@
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "tier", "settings": { "name": "Essential", "range": "1K - 5K", "featured": false } },
-      { "type": "tier", "settings": { "name": "Standard", "range": "5K - 15K", "featured": true, "badge": "Most Popular" } },
-      { "type": "tier", "settings": { "name": "Growth", "range": "15K - 40K", "featured": false } },
-      { "type": "tier", "settings": { "name": "Scale", "range": "40K+", "featured": false } }
-    ]
-  }
+  "presets": [
+    {
+      "name": "Max Motion Tiers",
+      "blocks": [
+        { "type": "tier", "settings": { "name": "Essential", "range": "1K - 5K", "featured": false } },
+        { "type": "tier", "settings": { "name": "Standard", "range": "5K - 15K", "featured": true, "badge": "Most Popular" } },
+        { "type": "tier", "settings": { "name": "Growth", "range": "15K - 40K", "featured": false } },
+        { "type": "tier", "settings": { "name": "Scale", "range": "40K+", "featured": false } }
+      ]
+    }
+  ]
 }
 {% endschema %}
