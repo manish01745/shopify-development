@@ -1,0 +1,36 @@
+<!-- NAV -->
+<nav class="max-motion-nav">
+  <a href="#" class="nav-logo"><span>{{ section.settings.logo_first_part }}</span> {{ section.settings.logo_second_part }}</a>
+  <a href="{{ section.settings.cta_link }}" class="nav-cta">{{ section.settings.cta_text }}</a>
+</nav>
+
+{% schema %}
+{
+  "name": "Max Motion Nav",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_first_part",
+      "label": "Logo First Part",
+      "default": "GPM"
+    },
+    {
+      "type": "text",
+      "id": "logo_second_part",
+      "label": "Logo Second Part",
+      "default": "Music Group"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Promote My Music"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ]
+}
+{% endschema %}

@@ -6,57 +6,80 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "Title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
-      }
+    "nav": {
+      "type": "max-motion-nav",
+      "settings": {}
+    },
+    "hero": {
+      "type": "max-motion-hero",
+      "settings": {}
+    },
+    "dateline": {
+      "type": "max-motion-dateline",
+      "settings": {}
+    },
+    "chapter1": {
+      "type": "max-motion-story-chapter-1",
+      "settings": {}
+    },
+    "chapter2": {
+      "type": "max-motion-story-chapter-2",
+      "settings": {}
+    },
+    "chapter3": {
+      "type": "max-motion-story-chapter-3",
+      "settings": {}
+    },
+    "cta_strip": {
+      "type": "max-motion-cta-strip",
+      "settings": {}
+    },
+    "chapter4": {
+      "type": "max-motion-story-chapter-4",
+      "settings": {}
+    },
+    "shows": {
+      "type": "max-motion-shows",
+      "settings": {}
+    },
+    "playlist": {
+      "type": "max-motion-playlist-breakdown",
+      "settings": {}
+    },
+    "tiers": {
+      "type": "max-motion-tiers",
+      "settings": {}
+    },
+    "banner": {
+      "type": "max-motion-banner",
+      "settings": {}
+    },
+    "final_cta": {
+      "type": "max-motion-final-cta",
+      "settings": {}
+    },
+    "footer": {
+      "type": "max-motion-footer",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "nav",
+    "hero",
+    "dateline",
+    "chapter1",
+    "chapter2",
+    "chapter3",
+    "cta_strip",
+    "chapter4",
+    "shows",
+    "playlist",
+    "tiers",
+    "banner",
+    "final_cta",
+    "footer"
   ]
 }

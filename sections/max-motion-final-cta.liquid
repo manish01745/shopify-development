@@ -1,0 +1,59 @@
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-inner">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.body }}</p>
+    <a href="{{ section.settings.link }}" class="btn-primary">
+      <span>{{ section.settings.button_text }}</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M11 5l4 5-4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    
+    <div class="final-guarantees">
+      {% assign items = section.settings.guarantees | split: ',' %}
+      {% for item in items %}
+        <div class="g-item">
+          <div class="g-dot"></div>
+          <span>{{ item | strip }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Final CTA",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Ready To <em>Build</em> Your Base?"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "Join the 1,500+ independent artists using GPM to break through the plateau and start building a real career in music."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get Started Now"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "textarea",
+      "id": "guarantees",
+      "label": "Guarantees (comma separated)",
+      "default": "Real Listeners Only, No Bot Traffic, Safe For Spotify, Full Dashboard Support"
+    }
+  ]
+}
+{% endschema %}

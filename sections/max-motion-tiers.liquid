@@ -1,0 +1,101 @@
+<!-- TIERS -->
+<div class="tiers-compact reveal">
+  {% for block in section.blocks %}
+    <a href="{{ block.settings.link }}" class="tier-c {% if block.settings.featured %}pop{% endif %}">
+      {% if block.settings.badge != blank %}
+        <div class="tier-c-badge">{{ block.settings.badge }}</div>
+      {% endif %}
+      <div class="tier-c-name">{{ block.settings.name }}</div>
+      <div class="tier-c-range">{{ block.settings.range }}</div>
+      <div class="tier-c-desc">{{ block.settings.cta_text }}</div>
+    </a>
+  {% endfor %}
+</div>
+
+{% if section.settings.show_bundle %}
+  <div class="bundle-bar reveal">
+    <div class="bundle-bar-head">{{ section.settings.bundle_title }}</div>
+    <div class="bundle-pills">
+      {% assign pills = section.settings.bundle_pills | split: ',' %}
+      {% for pill in pills %}
+        <div class="bundle-pill">{{ pill | strip }}</div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Max Motion Tiers",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bundle",
+      "label": "Show Bundle Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Bundle Bar Title",
+      "default": "Everything You Get In Every Campaign:"
+    },
+    {
+      "type": "textarea",
+      "id": "bundle_pills",
+      "label": "Bundle Pills (comma separated)",
+      "default": "Genre-Specific Targeting, Algorithmic Triggers, Full Dash Access, Data-Driven Pitching, Dedicated Account Manager"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Tier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Tier Name",
+          "default": "Essential"
+        },
+        {
+          "type": "text",
+          "id": "range",
+          "label": "Range / Price",
+          "default": "1K - 5K"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "default": "Select Plan →"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured / Pop Effect",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "tier", "settings": { "name": "Essential", "range": "1K - 5K", "featured": false } },
+      { "type": "tier", "settings": { "name": "Standard", "range": "5K - 15K", "featured": true, "badge": "Most Popular" } },
+      { "type": "tier", "settings": { "name": "Growth", "range": "15K - 40K", "featured": false } },
+      { "type": "tier", "settings": { "name": "Scale", "range": "40K+", "featured": false } }
+    ]
+  }
+}
+{% endschema %}
