@@ -1,0 +1,103 @@
+<!-- CHAPTER 1 - MEET THE ARTIST -->
+<section class="story-section" id="story">
+  <div class="article">
+    <div class="chapter reveal">
+      <div class="chapter-num">{{ section.settings.chapter_number }}</div>
+      <div>
+        <div class="chapter-label">{{ section.settings.chapter_label }}</div>
+        <div class="chapter-title">{{ section.settings.chapter_title }}</div>
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% if block.type == 'paragraph' %}
+        <p class="body-copy reveal">
+          {{ block.settings.text }}
+        </p>
+      {% elsif block.type == 'pull_quote' %}
+        <div class="pull-quote reveal" style="transition-delay:0.1s;">
+          <p>{{ block.settings.quote }}</p>
+          <cite>{{ block.settings.citation }}</cite>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Chapter 1",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chapter_number",
+      "label": "Chapter Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "chapter_label",
+      "label": "Chapter Label",
+      "default": "Meet The Artist"
+    },
+    {
+      "type": "textarea",
+      "id": "chapter_title",
+      "label": "Chapter Title (HTML allowed)",
+      "default": "Talent Was Never<br><em>The Problem.</em>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text (HTML allowed)"
+        }
+      ]
+    },
+    {
+      "type": "pull_quote",
+      "name": "Pull Quote",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "citation",
+          "label": "Citation"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "paragraph",
+        "settings": { "text": "Max Motion is an independent artist who, like most musicians at his level, had the harder thing already figured out. <strong>The music was good.</strong> Listeners who found it stayed with it. The drops hit. The mixes were clean. The vision was clear." }
+      },
+      {
+        "type": "paragraph",
+        "settings": { "text": "What he didn't have was <em>reach</em>. Sitting at <strong>4,000 monthly listeners</strong>, Max was caught in the same trap hundreds of thousands of other independent artists know by heart. Talent doesn't pay rent. Streams, shows, events, and brand deals do. And without that first step of garnering streams, going all-in on music meant betting against a financial reality that wasn't going to budge on its own." }
+      },
+      {
+        "type": "paragraph",
+        "settings": { "text": "He had momentum, an audience, and a ceiling that had stopped moving. Streaming is one of the most saturated, algorithm-driven corners of the music industry, and breaking through doesn't happen by uploading harder. <strong>It happens by being placed in front of the people who actually want what you make.</strong>" }
+      },
+      {
+        "type": "pull_quote",
+        "settings": {
+          "quote": "\"I knew the music was there. What I needed was for the right people to actually hear it. That's the part nobody tells you, talent alone doesn't move the needle.\"",
+          "citation": "— Max Motion"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

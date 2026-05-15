@@ -1,0 +1,47 @@
+<!-- CINEMATIC BANNER -->
+<section class="cinematic-banner reveal">
+  {% if section.settings.image != blank %}
+    <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="Banner" loading="lazy">
+  {% else %}
+    <img src="https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-banner.jpg?v=123" alt="Banner Placeholder" width="1600" height="900">
+  {% endif %}
+  <div class="banner-overlay">
+    <div class="banner-overlay-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">{{ section.settings.eyebrow }}</div>
+    </div>
+    <h3>{{ section.settings.title }}</h3>
+    <div class="banner-overlay-caption">{{ section.settings.caption }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Artist Vision"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "From Independent to <em>Industry-Ready.</em>"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "The Max Motion Story · GPM Music Group"
+    }
+  ]
+}
+{% endschema %}

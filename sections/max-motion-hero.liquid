@@ -1,0 +1,59 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-visual"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="equalizer" id="equalizer"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">{{ section.settings.eyebrow }}</div>
+    </div>
+
+    <h1>
+      {{ section.settings.title }}
+    </h1>
+
+    <p class="hero-deck">
+      {{ section.settings.deck }}
+    </p>
+
+    <a href="#story" class="hero-scroll">
+      <span>{{ section.settings.scroll_text }}</span>
+      <svg class="scroll-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Artist Case Study · Independent Artist Growth"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title (HTML allowed)",
+      "default": "From <span class=\"accent-word\">4,000</span><br>to <em>30,000+</em><br>Monthly Listeners."
+    },
+    {
+      "type": "textarea",
+      "id": "deck",
+      "label": "Deck Text",
+      "default": "How Max Motion went from <strong>4K monthly listeners</strong> stuck at a growth plateau to <strong>30K+</strong> globally with new revenue streams and show opportunities unlocking along the way. A 661% audience surge, a catalogue with real momentum, and the exact system that made it happen."
+    },
+    {
+      "type": "text",
+      "id": "scroll_text",
+      "label": "Scroll Text",
+      "default": "Read The Story"
+    }
+  ]
+}
+{% endschema %}

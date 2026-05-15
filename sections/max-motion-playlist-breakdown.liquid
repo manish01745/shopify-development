@@ -1,0 +1,78 @@
+<!-- PLAYLIST BREAKDOWN -->
+<div class="playlist-breakdown reveal">
+  <div class="playlist-breakdown-inner">
+    <div class="pb-content">
+      <div class="pb-tag">Spotify · Data</div>
+      <div class="pb-title">{{ section.settings.title }}</div>
+      <p class="pb-body">
+        {{ section.settings.body }}
+      </p>
+      <div class="pb-highlights">
+        {% for block in section.blocks %}
+          <div class="pb-highlight">
+            <div class="pb-highlight-name">{{ block.settings.label }}</div>
+            <div class="pb-highlight-val">{{ block.settings.value }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="pb-screenshot">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | image_url: width: 600 }}" alt="Playlist" loading="lazy">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-playlist.jpg?v=123" alt="Playlist Placeholder" width="280" height="362">
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Max Motion Playlist",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "The <em>Catalogue</em> Effect."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "We didn't just push one song. We built a machine that fed the whole catalogue. The result? <strong>142K+ streams</strong> on the lead track and a massive lift across all older releases."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Playlist Screenshot"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "highlight", "settings": { "label": "Lead Track", "value": "142,505" } },
+      { "type": "highlight", "settings": { "label": "Catalogue Lift", "value": "+412%" } },
+      { "type": "highlight", "settings": { "label": "Save Rate", "value": "18.4%" } },
+      { "type": "highlight", "settings": { "label": "Popularity", "value": "High" } }
+    ]
+  }
+}
+{% endschema %}

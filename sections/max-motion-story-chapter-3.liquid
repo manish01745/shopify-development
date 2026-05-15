@@ -1,0 +1,230 @@
+<!-- CHAPTER 3 - THE NUMBERS -->
+<section class="story-section">
+  <div class="article">
+    <div class="chapter reveal">
+      <div class="chapter-num">{{ section.settings.chapter_number }}</div>
+      <div>
+        <div class="chapter-label">{{ section.settings.chapter_label }}</div>
+        <div class="chapter-title">{{ section.settings.chapter_title }}</div>
+      </div>
+    </div>
+
+    <p class="body-copy reveal">
+      {{ section.settings.intro_text }}
+    </p>
+
+    <div class="proof-shot reveal" style="transition-delay:0.05s;">
+      <div class="proof-shot-header">
+        <div class="proof-shot-tag">Spotify · Verified</div>
+        <div class="proof-shot-title">{{ section.settings.proof_title }}</div>
+      </div>
+      <div class="proof-shot-grid">
+        <div class="proof-side before">
+          <div class="proof-label">
+            <div class="proof-label-text">Before</div>
+            <div class="proof-label-num">{{ section.settings.before_val }}</div>
+          </div>
+          <div class="proof-frame">
+            <img src="{{ section.settings.before_img | default: 'https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-before.jpg?v=123' }}" alt="Before" width="400" height="711">
+          </div>
+        </div>
+        <div class="proof-arrow">
+          <div class="proof-arrow-icon">→</div>
+          <div class="proof-arrow-pct">{{ section.settings.growth_pct }}</div>
+          <div class="proof-arrow-label">Growth Rate</div>
+        </div>
+        <div class="proof-side after">
+          <div class="proof-label">
+            <div class="proof-label-text">After</div>
+            <div class="proof-label-num">{{ section.settings.after_val }}</div>
+          </div>
+          <div class="proof-frame">
+            <img src="{{ section.settings.after_img | default: 'https://cdn.shopify.com/s/files/1/0000/0000/files/placeholder-after.jpg?v=123' }}" alt="After" width="400" height="711">
+          </div>
+        </div>
+      </div>
+      <span class="proof-caption">{{ section.settings.proof_caption }}</span>
+    </div>
+
+    <div class="growth-block reveal">
+      <div class="growth-row">
+        <div class="growth-side before">
+          <div class="growth-side-label">Before GPM</div>
+          <div class="growth-side-val">{{ section.settings.before_val_short }}</div>
+          <div class="growth-side-sub">Monthly Listeners</div>
+        </div>
+        <div class="growth-arrow">→</div>
+        <div class="growth-side after">
+          <div class="growth-side-label">After GPM</div>
+          <div class="growth-side-val">{{ section.settings.after_val_short }}</div>
+          <div class="growth-side-sub">Monthly Listeners</div>
+        </div>
+        <div class="growth-pct">
+          <div class="growth-pct-val">{{ section.settings.growth_pct }}</div>
+          <div class="growth-pct-label">Growth Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-box reveal" style="transition-delay:0.15s;">
+      {% for block in section.blocks %}
+        <div>
+          <div class="stat-box-val">{{ block.settings.value }}</div>
+          <div class="stat-box-label">{{ block.settings.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% for block in section.blocks %}
+      {% if block.type == 'paragraph' %}
+        <p class="body-copy reveal">
+          {{ block.settings.text }}
+        </p>
+      {% elsif block.type == 'pull_quote' %}
+        <div class="pull-quote reveal" style="transition-delay:0.15s;">
+          <p>{{ block.settings.quote }}</p>
+          <cite>{{ block.settings.citation }}</cite>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Chapter 3",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chapter_number",
+      "label": "Chapter Number",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "chapter_label",
+      "label": "Chapter Label",
+      "default": "The Results"
+    },
+    {
+      "type": "textarea",
+      "id": "chapter_title",
+      "label": "Chapter Title",
+      "default": "661%<br><em>And Climbing.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "These aren't projections. They aren't a \"potential range.\" They're what actually happened, pulled directly from Max Motion's Spotify For Artists dashboard."
+    },
+    {
+      "type": "text",
+      "id": "proof_title",
+      "label": "Proof Title",
+      "default": "Same Artist Page. Different Universe."
+    },
+    {
+      "type": "image_picker",
+      "id": "before_img",
+      "label": "Before Screenshot"
+    },
+    {
+      "type": "text",
+      "id": "before_val",
+      "label": "Before Value (Full)",
+      "default": "4,008"
+    },
+    {
+      "type": "text",
+      "id": "before_val_short",
+      "label": "Before Value (Short)",
+      "default": "4K"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_img",
+      "label": "After Screenshot"
+    },
+    {
+      "type": "text",
+      "id": "after_val",
+      "label": "After Value (Full)",
+      "default": "30,412"
+    },
+    {
+      "type": "text",
+      "id": "after_val_short",
+      "label": "After Value (Short)",
+      "default": "30K+"
+    },
+    {
+      "type": "text",
+      "id": "growth_pct",
+      "label": "Growth Percentage",
+      "default": "+661%"
+    },
+    {
+      "type": "text",
+      "id": "proof_caption",
+      "label": "Proof Caption",
+      "default": "*Real data verified via Spotify For Artists."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Callout",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text (HTML allowed)"
+        }
+      ]
+    },
+    {
+      "type": "pull_quote",
+      "name": "Pull Quote",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "citation",
+          "label": "Citation"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "value": "30K+", "label": "Monthly Listeners" } },
+      { "type": "stat", "settings": { "value": "+26K", "label": "Listeners Added" } },
+      { "type": "stat", "settings": { "value": "7.6X", "label": "Audience Multiplier" } },
+      { "type": "stat", "settings": { "value": "142K", "label": "Lead Track Streams" } },
+      { "type": "paragraph", "settings": { "text": "<strong>26,000+ new listeners</strong> isn't just a stream count. Each one is a potential future fan, playlist follower, show attendee, or repeat listener on the next release. The audience didn't just grow. It became a base." } },
+      { "type": "pull_quote", "settings": { "quote": "\"Going from 4K to 30K+ monthly listeners didn't just change my numbers, it changed the rooms I'm in.\"", "citation": "— Max Motion" } }
+    ]
+  }
+}
+{% endschema %}

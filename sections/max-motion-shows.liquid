@@ -1,0 +1,95 @@
+<!-- SHOWS SECTION -->
+<section class="shows-section">
+  <div class="shows-inner">
+    <div class="shows-grid">
+      <div class="shows-media reveal">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 1600 }}" alt="Show" loading="lazy">
+        {% else %}
+          <div class="shows-media-placeholder">
+            <div class="placeholder-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            </div>
+            <div class="placeholder-label">Show Footage / Media</div>
+            <div class="placeholder-sub">Cinematic performance video or high-res show photography</div>
+          </div>
+        {% endif %}
+        <div class="shows-media-frame"></div>
+      </div>
+
+      <div class="shows-content reveal" style="transition-delay:0.1s;">
+        <div class="chapter-label">{{ section.settings.label }}</div>
+        <div class="chapter-title">{{ section.settings.title }}</div>
+        <p class="body-copy" style="margin-top:20px;">
+          {{ section.settings.body }}
+        </p>
+
+        <div class="show-stats">
+          {% for block in section.blocks %}
+            <div class="show-stat">
+              <div class="show-stat-val">{{ block.settings.value }}</div>
+              <div class="show-stat-label">{{ block.settings.label }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Shows",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Media Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Real Momentum"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "From Data to<br><em>The Stage.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "Growth on Spotify doesn't stay on Spotify. It's the catalyst for the entire ecosystem. For Max, this meant a transition from bedroom producer to a touring artist with real demand."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "value": "12+", "label": "Paid Show Offers" } },
+      { "type": "stat", "settings": { "value": "3", "label": "Major Festivals" } },
+      { "type": "stat", "settings": { "value": "10K+", "label": "Social Followers Added" } },
+      { "type": "stat", "settings": { "value": "5", "label": "Brand Partnerships" } }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,113 @@
+<!-- CHAPTER 4 - BEFORE AFTER -->
+<section class="story-section alt">
+  <div class="article">
+    <div class="chapter reveal">
+      <div class="chapter-num">{{ section.settings.chapter_number }}</div>
+      <div>
+        <div class="chapter-label">{{ section.settings.chapter_label }}</div>
+        <div class="chapter-title">{{ section.settings.chapter_title }}</div>
+      </div>
+    </div>
+
+    <p class="body-copy reveal">
+      {{ section.settings.intro_text }}
+    </p>
+
+    <div class="before-after reveal" style="transition-delay:0.05s;">
+      <div class="ba-side ba-before">
+        <div class="ba-label">Before GPM</div>
+        <ul class="ba-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'before_item' %}
+              <li>{{ block.settings.text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="ba-side ba-after">
+        <div class="ba-label">After GPM</div>
+        <ul class="ba-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'after_item' %}
+              <li>{{ block.settings.text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <p class="body-copy reveal">
+      {{ section.settings.outro_text }}
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Max Motion Chapter 4",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chapter_number",
+      "label": "Chapter Number",
+      "default": "04"
+    },
+    {
+      "type": "text",
+      "id": "chapter_label",
+      "label": "Chapter Label",
+      "default": "The Transformation"
+    },
+    {
+      "type": "textarea",
+      "id": "chapter_title",
+      "label": "Chapter Title",
+      "default": "One Number.<br><em>Every Door Open.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "The most significant change wasn't the number itself—it was what that number enabled. In the music industry, listener counts act as a social proof currency."
+    },
+    {
+      "type": "textarea",
+      "id": "outro_text",
+      "label": "Outro Text",
+      "default": "Max is now operating at a level that simply wasn't accessible at 4,000 listeners. He's no longer just an artist with a dream; he's an artist with a verified audience."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "before_item",
+      "name": "Before Item (✕)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "after_item",
+      "name": "After Item (✓)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "before_item", "settings": { "text": "Struggling to book paid shows" } },
+      { "type": "before_item", "settings": { "text": "Invisible to major playlisters" } },
+      { "type": "after_item", "settings": { "text": "Consistent show offers" } },
+      { "type": "after_item", "settings": { "text": "Algorithmic momentum" } }
+    ]
+  }
+}
+{% endschema %}
